@@ -276,10 +276,13 @@
   position: relative;
   width: {{ section.settings.circle_diameter }}px;
   height: {{ section.settings.circle_diameter }}px;
+  min-width: {{ section.settings.circle_diameter }}px; /* Voeg deze regel toe om de breedte vast te zetten */
+  min-height: {{ section.settings.circle_diameter }}px; /* Voeg deze regel toe om de hoogte vast te zetten */
   display: flex;
   align-items: center;
   justify-content: center;
 }
+
 .elevator-progress-circle {
   position: absolute;
   top: 0;
