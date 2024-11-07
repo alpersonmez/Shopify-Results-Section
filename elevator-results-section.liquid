@@ -1,0 +1,338 @@
+{% schema %}
+{
+  "name": "Elevator Results Section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Results"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "Talk about results of your customers and how your product improved their life."
+    },
+    {
+      "type": "range",
+      "id": "circle_diameter",
+      "label": "Circle Diameter (px)",
+      "min": 30,
+      "max": 150,
+      "step": 5,
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "circle_line_thickness",
+      "label": "Circle Line Thickness (px)",
+      "min": 1,
+      "max": 10,
+      "step": 1,
+      "default": 4
+    },
+    {
+      "type": "text",
+      "id": "right_heading",
+      "label": "Right Heading",
+      "default": "Results"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "range",
+      "id": "stat_1_percent",
+      "label": "Stat 1 Percentage",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 92
+    },
+    {
+      "type": "text",
+      "id": "stat_1_text",
+      "label": "Stat 1 Text",
+      "default": "Reported a noticeable reduction in fine lines and wrinkles."
+    },
+    {
+      "type": "color",
+      "id": "stat_1_color",
+      "label": "Stat 1 Color",
+      "default": "#3498db"
+    },
+    {
+      "type": "range",
+      "id": "stat_2_percent",
+      "label": "Stat 2 Percentage",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 87
+    },
+    {
+      "type": "text",
+      "id": "stat_2_text",
+      "label": "Stat 2 Text",
+      "default": "Saw a significant improvement in skin tone and texture."
+    },
+    {
+      "type": "color",
+      "id": "stat_2_color",
+      "label": "Stat 2 Color",
+      "default": "#e67e22"
+    },
+    {
+      "type": "range",
+      "id": "heading_font_size",
+      "label": "Heading Font Size (px)",
+      "min": 16,
+      "max": 40,
+      "step": 1,
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "heading_margin_bottom",
+      "label": "Heading Margin Bottom (px)",
+      "min": 0,
+      "max": 50,
+      "step": 1,
+      "default": 10
+    },
+    {
+      "type": "range",
+      "id": "subtitle_margin_bottom",
+      "label": "Subtitle Margin Bottom (px)",
+      "min": 0,
+      "max": 50,
+      "step": 1,
+      "default": 15
+    },
+    {
+      "type": "range",
+      "id": "stat_3_percent",
+      "label": "Stat 3 Percentage",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 83
+    },
+    {
+      "type": "text",
+      "id": "stat_3_text",
+      "label": "Stat 3 Text",
+      "default": "Experienced a reduction in blemishes and breakouts."
+    },
+    {
+      "type": "color",
+      "id": "stat_3_color",
+      "label": "Stat 3 Color",
+      "default": "#9b59b6"
+    },
+    {
+      "type": "text",
+      "id": "note_text",
+      "label": "Note Text",
+      "default": "*These results are a testament to personal experiences."
+    }
+  ],
+  "presets": [
+      {
+        "name": "[Elevator] Results Section",
+        "category": "Custom"
+      }
+    ]
+}
+{% endschema %}
+
+<div class="elevator-results-section">
+  <!-- Left Container -->
+  <div class="elevator-results-left">
+    <p class="h2" style="font-size: {{ section.settings.heading_font_size }}px; margin-bottom: {{ section.settings.heading_margin_bottom }}px;">
+      {{ section.settings.heading }}
+    </p>
+    <p style="margin-bottom: {{ section.settings.subtitle_margin_bottom }}px;">
+      {{ section.settings.description }}
+    </p>
+    <div class="elevator-results-image">
+      <img src="{{ section.settings.image | img_url: 'large' }}" alt="Results Image">
+    </div>
+  </div>
+
+  <!-- Right Container -->
+  <div class="elevator-results-right">
+    <p class="h2" style="font-size: {{ section.settings.heading_font_size }}px; margin-bottom: {{ section.settings.heading_margin_bottom }}px;">
+      {{ section.settings.right_heading }}
+    </p>
+    <div class="elevator-divider"></div>
+
+    {% assign radius = section.settings.circle_diameter | divided_by: 2 %}
+    {% assign adjusted_radius = radius | minus: section.settings.circle_line_thickness %}
+
+    <!-- Stat 1 -->
+    <div class="elevator-stat-item">
+      <div class="elevator-stat-circle">
+        <svg class="elevator-progress-circle" width="{{ section.settings.circle_diameter }}" height="{{ section.settings.circle_diameter }}">
+          <circle class="elevator-circle-bg" cx="{{ radius }}" cy="{{ radius }}" r="{{ adjusted_radius }}" style="stroke-width: {{ section.settings.circle_line_thickness }}px;"></circle>
+          <circle class="elevator-circle-progress" cx="{{ radius }}" cy="{{ radius }}" r="{{ adjusted_radius }}" data-percent="{{ section.settings.stat_1_percent }}" data-color="{{ section.settings.stat_1_color }}" style="stroke-width: {{ section.settings.circle_line_thickness }}px;"></circle>
+        </svg>
+        <div class="elevator-stat-percentage">{{ section.settings.stat_1_percent }}%</div>
+      </div>
+      <div class="elevator-stat-description">{{ section.settings.stat_1_text }}</div>
+    </div>
+    <div class="elevator-divider"></div>
+
+    <!-- Stat 2 -->
+    <div class="elevator-stat-item">
+      <div class="elevator-stat-circle">
+        <svg class="elevator-progress-circle" width="{{ section.settings.circle_diameter }}" height="{{ section.settings.circle_diameter }}">
+          <circle class="elevator-circle-bg" cx="{{ radius }}" cy="{{ radius }}" r="{{ adjusted_radius }}" style="stroke-width: {{ section.settings.circle_line_thickness }}px;"></circle>
+          <circle class="elevator-circle-progress" cx="{{ radius }}" cy="{{ radius }}" r="{{ adjusted_radius }}" data-percent="{{ section.settings.stat_2_percent }}" data-color="{{ section.settings.stat_2_color }}" style="stroke-width: {{ section.settings.circle_line_thickness }}px;"></circle>
+        </svg>
+        <div class="elevator-stat-percentage">{{ section.settings.stat_2_percent }}%</div>
+      </div>
+      <div class="elevator-stat-description">{{ section.settings.stat_2_text }}</div>
+    </div>
+    <div class="elevator-divider"></div>
+
+    <!-- Stat 3 -->
+    <div class="elevator-stat-item">
+      <div class="elevator-stat-circle">
+        <svg class="elevator-progress-circle" width="{{ section.settings.circle_diameter }}" height="{{ section.settings.circle_diameter }}">
+          <circle class="elevator-circle-bg" cx="{{ radius }}" cy="{{ radius }}" r="{{ adjusted_radius }}" style="stroke-width: {{ section.settings.circle_line_thickness }}px;"></circle>
+          <circle class="elevator-circle-progress" cx="{{ radius }}" cy="{{ radius }}" r="{{ adjusted_radius }}" data-percent="{{ section.settings.stat_3_percent }}" data-color="{{ section.settings.stat_3_color }}" style="stroke-width: {{ section.settings.circle_line_thickness }}px;"></circle>
+        </svg>
+        <div class="elevator-stat-percentage">{{ section.settings.stat_3_percent }}%</div>
+      </div>
+      <div class="elevator-stat-description">{{ section.settings.stat_3_text }}</div>
+    </div>
+    <div class="elevator-divider"></div>
+
+    <p class="elevator-note">{{ section.settings.note_text }}</p>
+  </div>
+</div>
+
+
+
+<style>
+.elevator-results-section {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  background-color: #f9f4f2;
+}
+
+.elevator-results-left {
+  width: 100%;
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.elevator-results-image img {
+  width: 100%;
+  height: auto;
+}
+
+.elevator-results-right {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.elevator-stat-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1em;
+}
+
+.elevator-stat-circle {
+  position: relative;
+  width: {{ section.settings.circle_diameter }}px;
+  height: {{ section.settings.circle_diameter }}px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.elevator-progress-circle {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+}
+
+.elevator-circle-bg,
+.elevator-circle-progress {
+  fill: none;
+  stroke-width: {{ section.settings.circle_line_thickness }}px;
+}
+
+.elevator-circle-bg {
+  stroke: #eee;
+}
+
+.elevator-circle-progress {
+  transition: stroke-dashoffset 1s ease;
+}
+
+.elevator-stat-percentage {
+  position: absolute;
+  font-weight: bold;
+  font-size: 1em;
+  text-align: center;
+}
+
+.elevator-divider {
+  width: 100%;
+  height: 1px;
+  background-color: #ccc;
+  margin: 10px 0;
+}
+
+.elevator-note {
+  font-size: 0.8em;
+  color: #888;
+  margin-top: 10px;
+}
+
+@media (min-width: 768px) {
+  .elevator-results-section {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .elevator-results-left, .elevator-results-right {
+    width: 48%;
+  }
+}
+</style>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  document.querySelectorAll('.elevator-circle-progress').forEach(circle => {
+    const radius = circle.r.baseVal.value;
+    const circumference = 2 * Math.PI * radius;
+    const percent = Number(circle.getAttribute('data-percent'));
+    const color = circle.getAttribute('data-color');
+
+    // Set stroke color from data-color
+    circle.style.stroke = color;
+
+    // Ensure circle has the necessary stroke settings
+    circle.style.strokeDasharray = `${circumference} ${circumference}`;
+    circle.style.strokeDashoffset = circumference;
+
+    // Apply percentage-based offset
+    circle.style.strokeDashoffset = circumference - (percent / 100) * circumference;
+  });
+});
+</script>
