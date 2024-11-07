@@ -15,6 +15,12 @@
       "default": "<p>Talk about results of your customers and how your product improved their life.</p>"
     },
     {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#fff"
+    },
+    {
       "type": "range",
       "id": "circle_diameter",
       "label": "Circle Diameter (px)",
@@ -42,6 +48,11 @@
       "type": "image_picker",
       "id": "image",
       "label": "Image"
+    },
+    {
+      "type": "url",
+      "id": "video",
+      "label": "Video URL"
     },
     {
       "type": "range",
@@ -150,17 +161,25 @@
 {% endschema %}
 
 
-<div class="section elevator-results-section">
+<div class="section elevator-results-section" style="background-color: {{ section.settings.background_color }};">
   <!-- Left Container -->
   <div class="elevator-results-left">
     <p class="h2" style="font-size: {{ section.settings.heading_font_size }}px; margin-bottom: {{ section.settings.heading_margin_bottom }}px;">
       {{ section.settings.heading }}
     </p>
-    <p style="margin-bottom: {{ section.settings.subtitle_margin_bottom }}px;">
+    <div style="margin-bottom: {{ section.settings.subtitle_margin_bottom }}px;">
       {{ section.settings.description }}
-    </p>
-    <div class="elevator-results-image">
-      <img src="{{ section.settings.image | img_url: 'large' }}" alt="Results Image">
+    </div>
+
+    <div class="elevator-results-media">
+      {% if section.settings.video %}
+        <video controls style="width: 100%;">
+          <source src="{{ section.settings.video | video_url }}" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      {% elsif section.settings.image %}
+        <img src="{{ section.settings.image | img_url: 'large' }}" alt="Results Media" style="width: 100%;">
+      {% endif %}
     </div>
   </div>
 
@@ -221,7 +240,6 @@
 .elevator-results-section {
   display: flex;
   flex-direction: column;
-  background-color: #f9f4f2;
 }
 
 .elevator-results-left {
