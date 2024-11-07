@@ -176,9 +176,9 @@
     <!-- Stat 1 -->
     <div class="elevator-stat-item">
       <div class="elevator-stat-circle">
-        <svg class="elevator-progress-circle" width="{{ section.settings.circle_diameter }}" height="{{ section.settings.circle_diameter }}">
-          <circle class="elevator-circle-bg" cx="{{ radius }}" cy="{{ radius }}" r="{{ adjusted_radius }}" style="stroke-width: {{ section.settings.circle_line_thickness }}px;"></circle>
-          <circle class="elevator-circle-progress" cx="{{ radius }}" cy="{{ radius }}" r="{{ adjusted_radius }}" data-percent="{{ section.settings.stat_1_percent }}" data-color="{{ section.settings.stat_1_color }}" style="stroke-width: {{ section.settings.circle_line_thickness }}px;"></circle>
+        <svg class="elevator-progress-circle" viewBox="0 0 {{ section.settings.circle_diameter }} {{ section.settings.circle_diameter }}">
+          <circle class="elevator-circle-bg" cx="{{ radius }}" cy="{{ radius }}" r="{{ adjusted_radius }}"></circle>
+          <circle class="elevator-circle-progress" cx="{{ radius }}" cy="{{ radius }}" r="{{ adjusted_radius }}" data-percent="{{ section.settings.stat_1_percent }}" data-color="{{ section.settings.stat_1_color }}"></circle>
         </svg>
         <div class="elevator-stat-percentage">{{ section.settings.stat_1_percent }}%</div>
       </div>
@@ -189,9 +189,9 @@
     <!-- Stat 2 -->
     <div class="elevator-stat-item">
       <div class="elevator-stat-circle">
-        <svg class="elevator-progress-circle" width="{{ section.settings.circle_diameter }}" height="{{ section.settings.circle_diameter }}">
-          <circle class="elevator-circle-bg" cx="{{ radius }}" cy="{{ radius }}" r="{{ adjusted_radius }}" style="stroke-width: {{ section.settings.circle_line_thickness }}px;"></circle>
-          <circle class="elevator-circle-progress" cx="{{ radius }}" cy="{{ radius }}" r="{{ adjusted_radius }}" data-percent="{{ section.settings.stat_2_percent }}" data-color="{{ section.settings.stat_2_color }}" style="stroke-width: {{ section.settings.circle_line_thickness }}px;"></circle>
+        <svg class="elevator-progress-circle" viewBox="0 0 {{ section.settings.circle_diameter }} {{ section.settings.circle_diameter }}">
+          <circle class="elevator-circle-bg" cx="{{ radius }}" cy="{{ radius }}" r="{{ adjusted_radius }}"></circle>
+          <circle class="elevator-circle-progress" cx="{{ radius }}" cy="{{ radius }}" r="{{ adjusted_radius }}" data-percent="{{ section.settings.stat_2_percent }}" data-color="{{ section.settings.stat_2_color }}"></circle>
         </svg>
         <div class="elevator-stat-percentage">{{ section.settings.stat_2_percent }}%</div>
       </div>
@@ -202,9 +202,9 @@
     <!-- Stat 3 -->
     <div class="elevator-stat-item">
       <div class="elevator-stat-circle">
-        <svg class="elevator-progress-circle" width="{{ section.settings.circle_diameter }}" height="{{ section.settings.circle_diameter }}">
-          <circle class="elevator-circle-bg" cx="{{ radius }}" cy="{{ radius }}" r="{{ adjusted_radius }}" style="stroke-width: {{ section.settings.circle_line_thickness }}px;"></circle>
-          <circle class="elevator-circle-progress" cx="{{ radius }}" cy="{{ radius }}" r="{{ adjusted_radius }}" data-percent="{{ section.settings.stat_3_percent }}" data-color="{{ section.settings.stat_3_color }}" style="stroke-width: {{ section.settings.circle_line_thickness }}px;"></circle>
+        <svg class="elevator-progress-circle" viewBox="0 0 {{ section.settings.circle_diameter }} {{ section.settings.circle_diameter }}">
+          <circle class="elevator-circle-bg" cx="{{ radius }}" cy="{{ radius }}" r="{{ adjusted_radius }}"></circle>
+          <circle class="elevator-circle-progress" cx="{{ radius }}" cy="{{ radius }}" r="{{ adjusted_radius }}" data-percent="{{ section.settings.stat_3_percent }}" data-color="{{ section.settings.stat_3_color }}"></circle>
         </svg>
         <div class="elevator-stat-percentage">{{ section.settings.stat_3_percent }}%</div>
       </div>
@@ -215,6 +215,7 @@
     <p class="elevator-note">{{ section.settings.note_text }}</p>
   </div>
 </div>
+
 
 
 
